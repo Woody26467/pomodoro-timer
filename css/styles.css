@@ -41,3 +41,38 @@ body {
   width: 100%;
   background-color: rgb(125, 249, 208);
 }
+
+.input-container {
+  height: 60px;
+  width: 412px;
+  display: flex;
+}
+
+.input-container input {
+  background-color: rgb(206, 206, 207);
+  border-radius: 20px 0 0 20px;
+  width: 232px;
+  height: 100%;
+  padding: 0 30px;
+  border: none;
+  font-size: 20px;
+}
+
+.input-container input:focus {
+  outline: none;
+}
+
+.submit-button {
+  background-color: rgb(72, 182, 96);
+  color: rgb(255, 255, 255);
+  border: none;
+  height: 100%;
+  width: 120px;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 20px 20px 0;
+}
+
+.sub-text {
+  margin: 4px;
+}
