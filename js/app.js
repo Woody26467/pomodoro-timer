@@ -34,9 +34,17 @@ function render() {
     title.textContent = task.name
     controller.textContent = 'START'
 
+    deleteElement.addEventListener('click', deleteTask)
+
     taskBlock.append(deleteElement, title, controller)
     taskContainer.append(taskBlock)
   })
 }
 
 render()
+
+function deleteTask(e) {
+  console.log(e.target.parentNode)
+  e.target.parentNode.remove()
+  // TODO Remove task from array after deleting
+}
