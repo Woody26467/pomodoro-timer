@@ -1,17 +1,18 @@
 const taskContainer = document.querySelector('.task-container')
+const submitButton = document.querySelector('.submit-button')
 
 let tasks = [
   {
     name: 'Practice CSS Animations',
-    priority: 1,
+    priority: 0,
   },
   {
     name: 'Dev Community work',
-    priority: 4,
+    priority: 2,
   },
   {
     name: 'Algorithm Studies',
-    priority: 3,
+    priority: 1,
   },
 ]
 
@@ -48,3 +49,19 @@ function deleteTask(e) {
   e.target.parentNode.remove()
   // TODO Remove task from array after deleting
 }
+
+function addTask() {
+  const inputElement = document.querySelector('input')
+  const value = inputElement.value
+  console.log(value)
+  if (value) {
+    taskContainer.innerHTML = ''
+    tasks.push({
+      name: value,
+      priority: tasks.length,
+    })
+    render()
+  }
+}
+
+submitButton.addEventListener('click', addTask)
