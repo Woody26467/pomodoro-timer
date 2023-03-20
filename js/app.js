@@ -3,7 +3,7 @@ const submitButton = document.querySelector('.submit-button')
 const timeLeftDisplay = document.querySelector('#time-left')
 const sliderFill = document.querySelector('.fill')
 
-const startCount = 5
+const startCount = 25 * 60
 let timeLeft = startCount
 let timerId
 
@@ -67,10 +67,8 @@ function countDown(button) {
     sliderFill.style.width = (timeLeft / startCount) * 100 + '%'
     if (timeLeft <= 0) {
       clearInterval(timerId)
-      console.log(button.id)
       delete descendingTasks[button.id]
       button.parentNode.remove()
-      console.log(tasks)
       timeLeft = startCount
       timeLeftDisplay.textContent = convertToMin(timeLeft)
     }
@@ -107,15 +105,13 @@ function render() {
 render()
 
 function deleteTask(e) {
-  console.log(e.target.parentNode)
   e.target.parentNode.remove()
-  // TODO Remove task from array after deleting
+  delete descendingTasks[e.target.parentNode.lastChild.id]
 }
 
 function addTask() {
   const inputElement = document.querySelector('input')
   const value = inputElement.value
-  console.log(value)
   if (value) {
     taskContainer.innerHTML = ''
     inputElement.value = ''
