@@ -25,6 +25,12 @@ let tasks = [
 // Sort by priority
 const descendingTasks = tasks.sort((a, b) => a.priority - b.priority)
 
+function convertToMin(seconds) {
+  const minutes = Math.floor(seconds / 60)
+  const secondsLeft = seconds - minutes * 60
+  return minutes + ':' + (secondsLeft < 10 ? '0' : '') + secondsLeft
+}
+
 function handleClick(button) {
   switch (button.textContent) {
     case 'ACTIVE':
@@ -44,7 +50,7 @@ function handleClick(button) {
         button.classList.remove('active-button')
         clearInterval(timerId)
         timeLeft = startCount
-        timeLeftDisplay.textContent = timeLeft
+        timeLeftDisplay.textContent = convertToMin(timeLeft)
       })
 
       button.textContent = 'ACTIVE'
@@ -57,7 +63,7 @@ function handleClick(button) {
 function countDown(button) {
   timerId = setInterval(() => {
     timeLeft--
-    timeLeftDisplay.textContent = timeLeft
+    timeLeftDisplay.textContent = convertToMin(timeLeft)
     sliderFill.style.width = (timeLeft / startCount) * 100 + '%'
     if (timeLeft <= 0) {
       clearInterval(timerId)
@@ -66,7 +72,7 @@ function countDown(button) {
       button.parentNode.remove()
       console.log(tasks)
       timeLeft = startCount
-      timeLeftDisplay.textContent = timeLeft
+      timeLeftDisplay.textContent = convertToMin(timeLeft)
     }
   }, 1000)
 }
